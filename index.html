@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模拟京东云轮播图</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            list-style: none;
+            font-family:"Microsoft YaHei";
+        }
+        .banner {
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            position: relative;
+        }
+        .banner ul {
+            position: absolute;
+        }
+        .banner .banner-pic ul{
+            width: 500%;
+        }
+        .banner .banner-pic ul li {
+            width: 20%;
+            height: 500px;
+            border: 3px solid #000;
+            float: left;
+            position: relative;
+            transition: 2s all;
+            background: rgb(27, 41, 79);
+        }
+        .banner .banner-pic ul li:nth-child(5){
+            background: url('./source/img/14.jpg');
+        }
+        .banner .banner-pic ul li:nth-child(5) .b-right img {
+            position: absolute;
+            top:0px;
+            right:0px;
+        }
+        .banner ul li a {
+            color : #fff;
+        }
+        .banner ul li .b-left {
+            position: absolute;
+            top:180px;
+            left:200px;
+            transition: 2s all;
+        }
+        .banner ul li.active .b-left{
+            animation: rightToLeft 1s ease;
+        }
+        .banner ul li.active .b-right img:nth-child(1){
+            animation: botToTop 1s ease;
+            transition: 1s all;
+        }
+        .banner ul li .b-right img:nth-child(1){
+            position: absolute;
+            top:0px;
+            right:-280px;
+        }
+        .banner ul li .b-right img:nth-child(2){
+            position: absolute;
+            top:15px;
+            right:-280px;
+        }
+        .b-left h1{
+            font-size: 44px;
+        }
+        .b-left p {
+            font-size:20px;
+            line-height:50px;
+            height: 50px;
+        }
+        .banner .banner-point ul{
+            bottom: 20px;
+            left:50%;
+            margin-left:-85px;
+        }
+        .banner .banner-point ul li {
+            width: 24px;
+            height: 4px;
+            background-color: #fff;
+            float: left;
+            margin:0 5px;
+        }
+        .banner .banner-point ul li.now {
+            background-color: red;
+        }
+        
+        /*C3动画设置*/
+        @keyframes rightToLeft{
+            from{
+                left:400px;
+                opacity: 0.2;
+            }
+            10%{
+                left:340px;
+                opacity:0.5;
+            }
+            to{
+                left:200px;
+                opacity:1;
+            }
+        }
+        @keyframes botToTop{
+            from{
+                top:300px;
+                opacity:.2;
+            }
+            10%{
+                top:220px;
+                opacity:.4;
+            }
+            to{
+                top:0px;
+                opacity:1;
+            }
+        }
+    </style>
+</head>
+<body>
+<!--轮播图部分-->
+<div class='banner'>
+    <!--banner图片部分-->
+    <div class='banner-pic'>
+        <ul>
+            <li class='active'>
+                <a href="">
+                    <div class="b-left">
+                        <h1>京东云  免费套餐</h1>
+                        <p>云服务器免费半年，为您提供更加方便快捷的上云实践机会</p>
+                    </div>
+                    <div class="b-right">
+                        <img src="./source/img/13.png" alt="">
+                        <img src="./source/img/19.png" alt="">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <div class="b-left">
+                        <h1>下一代Skylake云主机</h1>
+                        <p>基于Intel最新一代Skylake处理器，计算、内存等性能显著提升</p>
+                        <span>查看详情</span>
+                    </div>
+                    <div class="b-right">
+                        <img src="./source/img/17.png" alt="">
+                        <img src="./source/img/11.png" alt="">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <div class="b-left">
+                        <h1>国内首推海量内存云主机</h1>
+                        <p>76核CPU 1464GB内存 限时免费试用</p>
+                        <span>立即申请</span>
+                    </div>
+                    <div class="b-right">
+                        <img src="./source/img/20.png" alt="">
+                        <img src="./source/img/21.png" alt="">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <div class="b-left">
+                        <h1>云贸电商B2B系统免费试用</h1>
+                        <p>秒级搭建属于您的电商网站</p>
+                        <span>立即试用</span>
+                    </div>
+                    <div class="b-right">
+                        <img src="./source/img/12.png" alt="">
+                        <img src="./source/img/14.png" alt="">
+                    </div>
+
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <div class="b-left">
+                        <h1>京东云  免费套餐</h1>
+                        <p>云服务器免费半年，为您提供更加方便快捷的上云实践机会</p>
+                    </div>
+                    <div class="b-right">
+                        <img src="./source/img/16.png" alt="">
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    <!--banner下标部分-->
+    <div class='banner-point'>
+        <ul>
+            <li class='now'></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+</div>
+
+<script src='./source/js/jquery-1.12.2.js'></script>
+<script>
+    /*=======轮播图部分=========*/
+    $(function(){
+        var pic = 0;
+        var setId;
+
+        function lun(pic){
+            setId = setInterval(function () {
+                $('.banner-pic li').removeClass('active').fadeOut();
+                $('.banner-pic li').eq(pic).next().addClass('active').fadeIn(600);
+
+                $('.banner-point li').removeClass('now');
+                $('.banner-point li').eq(pic).next().addClass('now');
+                pic++;
+                if(pic == 5){
+                    $('.banner-pic li').removeClass('active').fadeOut();
+                    $('.banner-pic li').eq(0).addClass('active').fadeIn(600);
+
+                    $('.banner-point li').removeClass('now');
+                    $('.banner-point li').eq(0).addClass('now');
+                    pic =0;
+                }
+            },2000)
+        }
+
+        lun(pic);
+
+        /*=====鼠标进入，下标改变==============*/
+        $('.banner-point li').mouseenter(function () {
+            clearInterval(setId);
+            $('.banner-point li').removeClass('now');
+            $(this).addClass('now');
+
+            var _index = $(this).index();
+
+
+            $('.banner-pic li').removeClass('active').fadeOut();
+            $('.banner-pic li').eq(_index).addClass('active').fadeIn(600);
+            lun(_index);
+        })
+
+
+
+
+
+    })
+</script>
+
+</body>
+</html>
